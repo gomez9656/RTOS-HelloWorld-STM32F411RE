@@ -46,16 +46,21 @@ int main(void)
 					2,
 					&xTaskHandle2);
 
+	//4. Start Scheduler
+	vTaskStartScheduler();
+
+	//The program never reach here
 	for(;;);
 }
 
 void vTask1_handler(void *params){
 
-
+	while(1);
 }
 
 void vTask2_handler(void *params){
 
+	while(1);
 }
 
 
