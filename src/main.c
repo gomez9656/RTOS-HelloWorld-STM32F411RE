@@ -34,6 +34,13 @@ static void prvSetupUart(void);
 void printmsg(char *msg);
 char usr_msg[250];
 
+#define	TRUE			1
+#define FALSE			0
+#define AVAILABLE		TRUE
+#define NOT_AVAILABLE	FALSE
+
+uint8_t UART_ACCESS_KEY = AVAILABLE;
+
 int main(void)
 {
 
@@ -81,12 +88,26 @@ int main(void)
 void vTask1_handler(void *params){
 
 	while(1){
+		if(UART_ACCESS_KEY == AVAILABLE){
+
+			UART_ACCESS_KEY = NOT_AVAILABLE;
+			printmsg("Hello World from Task-1\r\n");
+			UART_ACCESS_KEY = AVAILABLE;
+			taskYIELD();
+		}
 	}
 }
 
 void vTask2_handler(void *params){
 
 	while(1){
+		if(UART_ACCESS_KEY == AVAILABLE){
+
+			UART_ACCESS_KEY = NOT_AVAILABLE;
+			printmsg("Hello World from Task-2\r\n");
+			UART_ACCESS_KEY = AVAILABLE;
+			taskYIELD();
+		}
 	}
 }
 
