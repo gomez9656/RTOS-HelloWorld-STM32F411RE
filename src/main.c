@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 #include "stm32f4xx.h"
 			
 #include "FreeRTOS.h"
@@ -95,7 +96,7 @@ static void prvSetupHardware(void){
 	//PA2 is Tx. PA3 is Rx
 	//Alternate function configuration of MCU to behave as UART2
 
-	memset(gpio_uart_pins, 0, sizeof(gpio_uart_pins));
+	memset(&gpio_uart_pins, 0, sizeof(gpio_uart_pins));
 
 	gpio_uart_pins.GPIO_Pin = GPIO_Pin_2 | GPIO_Pin_3;
 	gpio_uart_pins.GPIO_Mode = GPIO_Mode_AF;
@@ -108,7 +109,7 @@ static void prvSetupHardware(void){
 
 	//UART parameter initializations
 
-	memset(uart2_init, 0, sizeof(uart2_init));
+	memset(&uart2_init, 0, sizeof(uart2_init));
 
 	uart2_init.USART_BaudRate = 115200;
 	uart2_init.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
