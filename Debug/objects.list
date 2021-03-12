@@ -45,6 +45,5 @@
 "Third-Party/FreeRTOS/org/Source/portable/GCC/ARM_CM4F/port.o"
 "Third-Party/FreeRTOS/org/Source/portable/MemMang/heap_4.o"
 "src/main.o"
-"src/syscalls.o"
 "src/system_stm32f4xx.o"
 "startup/startup_stm32f411xe.o"

@@ -37,7 +37,7 @@ all: RTOS-HelloWorld-STM32F411RE.elf
 RTOS-HelloWorld-STM32F411RE.elf: $(OBJS) $(USER_OBJS) C:\Users\juanp\Documents\RTOS\RTOS-HelloWorld-STM32F411RE/LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:/Users/juanp/Documents/RTOS/RTOS-HelloWorld-STM32F411RE/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "RTOS-HelloWorld-STM32F411RE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=rdimon.specs -lc -lrdimon -T"C:/Users/juanp/Documents/RTOS/RTOS-HelloWorld-STM32F411RE/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "RTOS-HelloWorld-STM32F411RE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
