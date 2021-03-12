@@ -8,7 +8,8 @@
   ******************************************************************************
 */
 
-
+#include <stdio.h>
+#include <stdint.h>
 #include "stm32f4xx.h"
 			
 #include "FreeRTOS.h"
@@ -28,6 +29,8 @@ int main(void)
 {
 
 	initialise_monitor_handles();
+
+	printf("Hello World example using semihosting");
 	//1. Reset the RCC clock configuration to the default reset state.
 	//HSI on, PLL off, HSE off, CPU clock = 16MhZ
 	RCC_DeInit();
@@ -59,12 +62,16 @@ int main(void)
 
 void vTask1_handler(void *params){
 
-	while(1);
+	while(1){
+		printf("Hello World from Task-1\r\n");
+	}
 }
 
 void vTask2_handler(void *params){
 
-	while(1);
+	while(1){
+		printf("Hello World from Task-2\r\n");
+	}
 }
 
 
