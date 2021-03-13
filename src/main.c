@@ -50,6 +50,10 @@ int main(void)
 	printf("Hello World example using semihosting");
 #endif
 
+	//Cycle counting
+	DWT->CTRL |= (1 << 0);
+
+
 	//1. Reset the RCC clock configuration to the default reset state.
 	//HSI on, PLL off, HSE off, CPU clock = 16MhZ
 	RCC_DeInit();
@@ -62,6 +66,10 @@ int main(void)
 
 	sprintf(usr_msg, "This is Hello World application starting\r\n");
 	printmsg(usr_msg);
+
+	//Start recording
+	SEGGER_SYSVIEW_Conf();
+	SEGGER_SYSVIEW_Start();
 
 	//3. Crate 2 tak-1 and task-2
 	xTaskCreate(vTask1_handler,
